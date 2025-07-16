@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> Menu </title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f6f6f6;
+      padding: 20px;
+    }
+    h1 {
+      color: #333;
+    }
+    .menu-section {
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .menu-item {
+      margin-bottom: 10px;
+    }
+    .submit-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .submit-btn:hover {
+      background-color: #218838;
+    }
+    #selectedItemsList {
+      margin-top: 10px;
+    }
+    #total {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Restaurant Menu</h1>
+
+  <form id="menuForm">
+    <div class="menu-section">
+      <h2>Starters</h2>
+      <div class="menu-item">
+        <input type="checkbox" name="item" value="Spring Rolls" data-price="120"> Spring Rolls - ₹120
+      </div>
+      <div class="menu-item">
+        <input type="checkbox" name="item" value="Soup" data-price="90"> Soup - ₹90
+      </div>
+      <div class="menu-item">
+        <input type="checkbox" name="item" value="Garlic Bread" data-price="100"> Garlic Bread - ₹100
+      </div>
+    </div>
+
+    <div class="menu-section">
+      <h2>Main Course</h2>
+      <div class="menu-item">
+        <input type="checkbox" name="item" value="Veg Biryani" data-price="180"> Veg Biryani - ₹180
+      </div>
+      <div class="menu-item">
+        <input type="checkbox" name="item" value="Paneer Butter Masala" data-price="220"> Paneer Butter Masala - ₹220
+      </div>
+      <div class="menu-item">
+        <input type="checkbox" name="item" value="Chicken Curry" data-price="250"> Chicken Curry - ₹250
+      </div>
+    </div>
+
+    <div class="menu-section">
+      <h2>Desserts</h2>
+      <div class="menu-item">
+        <input type="checkbox" name="item" value="Ice Cream" data-price="80"> Ice Cream - ₹80
+      </div>
+      <div class="menu-item">
+        <input type="checkbox" name="item" value="Gulab Jamun" data-price="70"> Gulab Jamun - ₹70
+      </div>
+      <div class="menu-item">
+        <input type="checkbox" name="item" value="Brownie" data-price="90"> Brownie - ₹90
+      </div>
+    </div>
+
+    <button type="button" class="submit-btn" onclick="showSelectedItems()">Submit</button>
+  </form>
+
+  <h2>Selected Items:</h2>
+  <ul id="selectedItemsList"></ul>
+  <div id="total"></div>
+
+  <script>
+    function showSelectedItems() {
+      const checkboxes = document.querySelectorAll('input[name="item"]:checked');
+      const list = document.getElementById("selectedItemsList");
+      const totalDisplay = document.getElementById("total");
+
+      list.innerHTML = "";
+      let total = 0;
+
+      checkboxes.forEach(cb => {
+        const item = cb.value;
+        const price = parseInt(cb.getAttribute("data-price"));
+        total += price;
+
+        const li = document.createElement("li");
+        li.textContent = `${item} - ₹${price}`;
+        list.appendChild(li);
+      });
+
+      totalDisplay.textContent = `Total: ₹${total}`;
+    }
+  </script>
+
+</body>
+</html>

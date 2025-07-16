@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Welcome to our Restaurant</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fef6e4;
+      text-align: center;
+      padding-top: 100px;
+    }
+    h1 {
+      color: #333;
+      margin-bottom: 40px;
+    }
+    form {
+      background-color: #fff;
+      padding: 30px;
+      display: inline-block;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    input[type="text"],
+    input[type="tel"] {
+      padding: 10px;
+      margin: 10px 0;
+      width: 250px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    input[type="submit"] {
+      padding: 10px 20px;
+      background-color: #ff7f50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    input[type="submit"]:hover {
+      background-color: #e26941;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Welcome to Our Restaurant</h1>
+
+  <form onsubmit="handleSubmit(event)">
+    <div>
+      <input type="text" name="name" placeholder="Enter your name" required>
+    </div>
+    <div>
+      <input type="tel" name="mobile" placeholder="Enter your mobile number" required pattern="[0-9]{10}">
+    </div>
+    <div>
+      <input type="submit" value="Submit">
+    </div>
+  </form>
+
+  <script>
+    function handleSubmit(event) {
+      event.preventDefault();
+      const name = event.target.name.value;
+      const mobile = event.target.mobile.value;
+      alert(`Thank you, ${name}! Your mobile number ${mobile} has been submitted.`);
+    }
+  </script>
+
+</body>
+</html>
